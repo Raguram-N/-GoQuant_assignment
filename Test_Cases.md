@@ -32,45 +32,76 @@ This document contains detailed QA test cases for [Buggy Car Rating Application]
 ---
 
 ## TC001 – User Registration
-- **Precondition:** User is on the registration page  
+- **Objective:** Verify that a new user can successfully register an account
+- **Precondition:** User is on the registration page of the [Buggy Car Rating App](https://buggy.justtestit.org/)
 - **Test Steps:**  
-  1. Enter a valid username  
-  2. Enter a valid email address  
-  3. Enter a password  
-  4. Click **Register**  
-- **Expected Result:** Account is created; confirmation message appears  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
+  1. Open the registration page  
+  2. Enter a valid **Login/Username** (e.g., `testuser123`)  
+  3. Enter a valid **First Name** (e.g., `Test`)  
+  4. Enter a valid **Last Name** (e.g., `User`)  
+  5. Enter a **Password** (e.g., `Test@1234`)  
+  6. Enter the **Confirm Password** field with the same password  
+  7. Click **Register**  
+  8. Observe if a confirmation message appears  
+- **Expected Result:**  
+  - A confirmation message appears (e.g., Registration is successful”)   
 - **Priority:** High  
-- **Test Data:** Random valid credentials  
+- **Test Data:** Random valid credentials for all required fields (Login, First Name, Last Name, Password)
+
+ 
 
 ---
 
 ## TC002 – User Login
-- **Precondition:** User is registered  
+- **Objective:** Verify that a registered user can successfully log in to the application
+- **Precondition:** User has already registered an account on the Buggy Car Rating App
 - **Test Steps:**  
-  1. Navigate to the login page  
-  2. Enter valid credentials  
-  3. Click **Login**  
-- **Expected Result:** Redirected to dashboard/home page  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
+  1. Open the login page of the [Buggy Car Rating App](https://buggy.justtestit.org/)  
+  2. Enter the **registered email address** (e.g., `testuser@example.com`)  
+  3. Enter the corresponding **password** (e.g., `Test@1234`)  
+  4. Click the **Login** button  
+  5. Observe if the user is redirected to the **dashboard/home page**  
+  6. Verify that the user's name or profile icon appears on the page  
+- **Expected Result:**  
+  - User is successfully logged in  
+  - Redirected to the dashboard/home page  
+  - User-specific elements like profile name or icon are visible  
 - **Priority:** High  
-- **Test Data:** Registered user credentials  
+- **Test Data:** Valid registered user credentials
 
 ---
 
-## TC003 – Login with Invalid Credentials
-- **Precondition:** User on login page  
+## TC003 – User Registration with Invalid Credentials
+- **Objective:** Verify that the application prevents account creation when invalid or conflicting data is provided
+- **Precondition:** User is on the registration page of the [Buggy Car Rating App](https://buggy.justtestit.org/)
 - **Test Steps:**  
-  1. Enter incorrect username/email  
-  2. Enter incorrect password  
-  3. Click **Login**  
-- **Expected Result:** Error message appears; user stays on login page  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
+  1. Open the registration page  
+  2. Enter a **Login/Username** that is already taken (e.g., `existinguser`)  
+  3. Enter valid **First Name** and **Last Name**  
+  4. Enter a **Password** that is too short (e.g., `123`)  
+  5. Enter a **Confirm Password** that does not match the password (e.g., `1234`)  
+  6. Click **Register**  
+  7. Observe the error messages displayed for each issue  
+  8. Try entering invalid characters in username or names to test validation  
+  9. Attempt registration with blank required fields  
+- **Expected Result:**  
+  - Registration is blocked for all invalid inputs  
+  - Specific error messages appear for each scenario:  
+    - **Passwords do not match** → “Passwords must match”  
+    - **Password too short** → “Minimum field size of 6, SignUpInput.Password”  
+    - **Username already taken** → “Username already exists”  
+    - **Missing required fields** → Field-specific error messages  
+    - **Invalid characters** → Validation error message  
+  - User remains on the registration page  
 - **Priority:** High  
-- **Test Data:** Invalid credentials  
+- **Test Data:**  
+  - Username already taken  
+  - Short password (less than 6 characters)  
+  - Mismatched password/confirm password  
+  - Blank fields  
+  - Invalid characters in username/first/last name  
+
+
 
 ---
 
