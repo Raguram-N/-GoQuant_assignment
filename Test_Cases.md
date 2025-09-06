@@ -111,7 +111,9 @@ This document contains detailed QA test cases for [Buggy Car Rating Application]
 
 ## TC004 – Add Car voting
 - **Objective:** Verify that a logged-in user can vote for a car and optionally add a comment, and that the total votes count updates correctly  
-- **Precondition:** User is logged in and navigated to a car detail page (can reach via **Popular Make**, **Popular Model**, or **Overall Rating**)  
+- **Precondition:**
+     - User is logged in on the [Buggy Car Rating App](https://buggy.justtestit.org/)
+     - navigated to a car detail page (can reach via **Popular Make**, **Popular Model**, or **Overall Rating**)  
 - **Test Steps:**  
   1. On the car detail page, check the current **Votes** count  
   2. Click the **Vote** button for the car  
@@ -176,7 +178,7 @@ This document contains detailed QA test cases for [Buggy Car Rating Application]
 Ensure that once a user logs out, the voting functionality is no longer accessible.  
 
 **Precondition:**  
-User is logged in and on any car detail page.  
+User is logged in on the [Buggy Car Rating App](https://buggy.justtestit.org/) 
 
 **Test Steps:**  
 1. Log out of the application using the **Logout** button.  
