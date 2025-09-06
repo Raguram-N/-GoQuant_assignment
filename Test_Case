@@ -1,0 +1,151 @@
+# 📄 Test Cases for GoQuant Assignment
+
+**Title:** Test Cases – Buggy Car Rating Application  
+**Author:** Raguram Narayanaswamy  
+**Date:** 6th September 2025  
+
+---
+
+## 📑 Table of Contents
+- [1. TC001 – User Registration](#1-tc001--user-registration)
+- [2. TC002 – User Login](#2-tc002--user-login)
+- [3. TC003 – Add Car Rating](#3-tc003--add-car-rating)
+- [4. TC004 – Search Car Model](#4-tc004--search-car-model)
+- [5. TC005 – Shopping Cart Add/Remove](#5-tc005--shopping-cart-addremove)
+- [6. TC006 – Checkout Process](#6-tc006--checkout-process)
+- [7. TC007 – User Profile Update](#7-tc007--user-profile-update)
+- [8. TC008 – Logout](#8-tc008--logout)
+- [9. TC009 – Responsive Design](#9-tc009--responsive-design)
+- [10. TC010 – Cross-Browser](#10-tc010--cross-browser)
+
+---
+
+## 1. TC001 – User Registration
+- **Precondition:** User is on the registration page  
+- **Test Steps:**  
+  1. Enter valid username, email, and password  
+  2. Click **Register**  
+- **Expected Result:** Account is created; confirmation message appears  
+- **Actual Result:** TBD  
+- **Pass/Fail:** TBD  
+- **Priority:** High  
+- **Test Data:** Random valid credentials  
+
+---
+
+## 2. TC002 – User Login
+- **Precondition:** User is registered  
+- **Test Steps:**  
+  1. Navigate to login page  
+  2. Enter valid credentials  
+  3. Click **Login**  
+- **Expected Result:** Redirected to dashboard/home page  
+- **Actual Result:** TBD  
+- **Pass/Fail:** TBD  
+- **Priority:** High  
+- **Test Data:** Registered user  
+
+---
+
+## 3. TC003 – Add Car Rating
+- **Precondition:** User is logged in  
+- **Test Steps:**  
+  1. Navigate to a car model page  
+  2. Select star rating  
+  3. Submit rating  
+- **Expected Result:** Rating saved; updated average rating displayed  
+- **Actual Result:** TBD  
+- **Pass/Fail:** TBD  
+- **Priority:** High  
+- **Test Data:** Any car model  
+
+---
+
+## 4. TC004 – Search Car Model
+- **Precondition:** User is logged in  
+- **Test Steps:**  
+  1. Enter car model name in search bar  
+  2. Click **Search**  
+- **Expected Result:** Relevant car model(s) appear in search results  
+- **Actual Result:** TBD  
+- **Pass/Fail:** TBD  
+- **Priority:** Medium  
+- **Test Data:** Valid car names  
+
+---
+
+## 5. TC005 – Shopping Cart Add/Remove
+- **Precondition:** User is logged in  
+- **Test Steps:**  
+  1. Add item to cart  
+  2. Remove item from cart  
+- **Expected Result:** Cart updates correctly  
+- **Actual Result:** TBD  
+- **Pass/Fail:** TBD  
+- **Priority:** High  
+- **Test Data:** Any product  
+
+---
+
+## 6. TC006 – Checkout Process
+- **Precondition:** Item is in cart  
+- **Test Steps:**  
+  1. Proceed to checkout  
+  2. Fill payment and shipping details  
+  3. Submit order  
+- **Expected Result:** Order confirmation displayed  
+- **Actual Result:** TBD  
+- **Pass/Fail:** TBD  
+- **Priority:** High  
+- **Test Data:** Test payment data  
+
+---
+
+## 7. TC007 – User Profile Update
+- **Precondition:** User is logged in  
+- **Test Steps:**  
+  1. Navigate to profile page  
+  2. Update profile details  
+  3. Save changes  
+- **Expected Result:** Changes saved successfully  
+- **Actual Result:** TBD  
+- **Pass/Fail:** TBD  
+- **Priority:** Medium  
+- **Test Data:** Valid profile info  
+
+---
+
+## 8. TC008 – Logout
+- **Precondition:** User is logged in  
+- **Test Steps:**  
+  1. Click **Logout**  
+- **Expected Result:** User redirected to login page  
+- **Actual Result:** TBD  
+- **Pass/Fail:** TBD  
+- **Priority:** High  
+- **Test Data:** NA  
+
+---
+
+## 9. TC009 – Responsive Design
+- **Precondition:** Any page open  
+- **Test Steps:**  
+  1. Resize browser window or switch to mobile view using DevTools  
+- **Expected Result:** Layout adapts; no elements broken  
+- **Actual Result:** TBD  
+- **Pass/Fail:** TBD  
+- **Priority:** Medium  
+- **Test Data:** NA  
+
+---
+
+## 10. TC010 – Cross-Browser
+- **Precondition:** Any page open  
+- **Test Steps:**  
+  1. Open app in Chrome and Firefox  
+  2. Perform basic actions (login, search, add rating)  
+- **Expected Result:** All actions work identically in both browsers  
+- **Actual Result:** TBD  
+- **Pass/Fail:** TBD  
+- **Priority:** Medium  
+- **Test Data:** NA  
