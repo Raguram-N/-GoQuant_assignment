@@ -10,8 +10,8 @@ This document contains detailed QA test cases for [Buggy Car Rating Application]
 ## 📑 Table of Contents
 - [TC001 – User Registration](#tc001--user-registration)
 - [TC002 – User Login](#tc002--user-login)
-- [TC003 – Login with Invalid Credentials](#tc003--login-with-invalid-credentials)
-- [TC004 – Add Car Rating](#tc004--add-car-rating)
+- [TC003 – Negative Scenarios: Registration and Login](#tc003--negative-scenarios-registration-and-login)
+- [TC004 – Add Car voting](#tc004--add-car-voting)
 - [TC005 – Add Multiple Ratings](#tc005--add-multiple-ratings)
 - [TC006 – Search Car Model](#tc006--search-car-model)
 - [TC007 – Search Non-Existent Car](#tc007--search-non-existent-car)
@@ -44,7 +44,8 @@ This document contains detailed QA test cases for [Buggy Car Rating Application]
   7. Click **Register**  
   8. Observe if a confirmation message appears  
 - **Expected Result:**  
-  - A confirmation message appears (e.g., Registration is successful”)   
+  - The **Register button remains disabled** until all required fields are filled correctly  
+  - After clicking, a confirmation message appears (e.g., “Registration is successful”) 
 - **Priority:** High  
 - **Test Data:** Random valid credentials for all required fields (Login, First Name, Last Name, Password)
 
@@ -71,51 +72,77 @@ This document contains detailed QA test cases for [Buggy Car Rating Application]
 
 ---
 
-## TC003 – User Registration with Invalid Credentials
-- **Objective:** Verify that the application prevents account creation when invalid or conflicting data is provided
-- **Precondition:** User is on the registration page of the [Buggy Car Rating App](https://buggy.justtestit.org/)
-- **Test Steps:**  
-  1. Open the registration page  
-  2. Enter a **Login/Username** that is already taken (e.g., `existinguser`)  
-  3. Enter valid **First Name** and **Last Name**  
-  4. Enter a **Password** that is too short (e.g., `123`)  
-  5. Enter a **Confirm Password** that does not match the password (e.g., `1234`)  
+## TC003 – Negative Scenarios: Registration and Login
+- **Objective:** Verify that the application prevents account creation or login when invalid, conflicting, or missing data is provided
+- **Precondition:** User is on the registration page or login page of the [Buggy Car Rating App](https://buggy.justtestit.org/)
+
+- **Test Steps (Registration):**  
+  1. Open the **registration page**  
+  2. Enter a **Login/Username** that is already taken (e.g., `existinguser`) 
+  3. Enter **First Name** and **Last Name** with invalid characters
+  4. Enter a **Password** that is too short (e.g., `123`) 
+  5. Enter a **Confirm Password** that does not match the password (e.g., `1234`) 
   6. Click **Register**  
-  7. Observe the error messages displayed for each issue  
-  8. Try entering invalid characters in username or names to test validation  
-  9. Attempt registration with blank required fields  
+  7. Observe the **error messages** displayed for each invalid or missing input  
+
+- **Test Steps (Login):**  
+  1. Open the **login page**  
+  2. Enter an incorrect **username/email** (e.g., `wronguser@example.com`) **OR** leave it blank  
+  3. Enter an incorrect **password** (e.g., `WrongPass123`) **OR** leave it blank  
+  4. Click **Login**  
+  5. Verify that an **error message** is displayed  
+  6. Ensure that the user **remains on the login page** and cannot access the dashboard or protected pages  
+
 - **Expected Result:**  
   - Registration is blocked for all invalid inputs  
-  - Specific error messages appear for each scenario:  
+  - Login is blocked for invalid credentials  
+  - Specific error messages appear:  
     - **Passwords do not match** → “Passwords must match”  
     - **Password too short** → “Minimum field size of 6, SignUpInput.Password”  
     - **Username already taken** → “Username already exists”  
     - **Missing required fields** → Field-specific error messages  
     - **Invalid characters** → Validation error message  
-  - User remains on the registration page  
+    - **Invalid login credentials** → “Invalid username or password”  
+  - User remains on the respective page (registration or login)  
+
 - **Priority:** High  
+
 - **Test Data:**  
-  - Username already taken  
-  - Short password (less than 6 characters)  
-  - Mismatched password/confirm password  
-  - Blank fields  
-  - Invalid characters in username/first/last name  
+  - **Registration:** Username already taken, short password, mismatched password/confirm password, blank fields, invalid characters in username/first/last name  
+  - **Login:** Invalid username/email, invalid password, blank fields  
 
 
 
 ---
 
-## TC004 – Add Car Rating
-- **Precondition:** User is logged in  
+## TC004 – Add Car voting
+- **Objective:** Verify that a logged-in user can vote for a car and optionally add a comment, and that the total votes count updates correctly  
+- **Precondition:** User is logged in and navigated to a car detail page (can reach via **Popular Make**, **Popular Model**, or **Overall Rating**)  
 - **Test Steps:**  
-  1. Navigate to a car model page  
-  2. Select star rating (1-5)  
-  3. Click **Submit Rating**  
-- **Expected Result:** Rating saved; average rating updates  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
+  1. On the car detail page, check the current **Votes** count  
+  2. Click the **Vote** button for the car  
+  3. Optionally, enter a comment in the **Your Comment** field 
+     - Enter normal text (e.g., `Great car!`)  
+     - Enter potentially malicious text (e.g., `<script>alert('hack')</script>`)   
+  4. Submit the vote  
+  5. Observe any confirmation message (e.g., “Thank you for your vote!”)  
+  6. Verify that the **Votes** count increments by 1  
+  7. Check that the comment (if entered) appears in the comments list with correct timestamp and author  
+  8. Repeat voting from other user accounts (if possible) to validate vote increment  
+  9. Attempt to submit invalid inputs in the comment (e.g., scripts, special characters) to check validation  
+
+- **Expected Result:**  
+  - Vote is successfully registered  
+  - Total votes count increases correctly  
+  - Comment appears under the car (if provided) 
+  - No XSS or script injection vulnerabilities  - Script/HTML injection is **escaped or blocked** (e.g., `<script>` displays as text, not executed)  
+  - Users cannot vote multiple times from the same account for same car (if intended)  
+
 - **Priority:** High  
-- **Test Data:** Any car model  
+- **Test Data:**  
+  - Any valid car model  
+  - Normal comment text  
+  - Malicious/script input for security testing  
 
 ---
 
