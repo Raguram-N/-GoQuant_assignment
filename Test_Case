@@ -1,31 +1,18 @@
-# 📄 Test Cases for GoQuant Assignment
+# 📄 Buggy Car Rating Application – Test Cases
 
-**Title:** Test Cases – Buggy Car Rating Application  
 **Author:** Raguram Narayanaswamy  
 **Date:** 6th September 2025  
 
----
-
-## 📑 Table of Contents
-- [1. TC001 – User Registration](#1-tc001--user-registration)
-- [2. TC002 – User Login](#2-tc002--user-login)
-- [3. TC003 – Add Car Rating](#3-tc003--add-car-rating)
-- [4. TC004 – Search Car Model](#4-tc004--search-car-model)
-- [5. TC005 – Shopping Cart Add/Remove](#5-tc005--shopping-cart-addremove)
-- [6. TC006 – Checkout Process](#6-tc006--checkout-process)
-- [7. TC007 – User Profile Update](#7-tc007--user-profile-update)
-- [8. TC008 – Logout](#8-tc008--logout)
-- [9. TC009 – Responsive Design](#9-tc009--responsive-design)
-- [10. TC010 – Cross-Browser](#10-tc010--cross-browser)
+This document contains detailed QA test cases for the [Buggy Car Rating Application](https://buggy.justtestit.org/).  
 
 ---
 
-## 1. TC001 – User Registration
+## TC001 – User Registration
 - **Precondition:** User is on the registration page  
 - **Test Steps:**  
   1. Enter valid username, email, and password  
   2. Click **Register**  
-- **Expected Result:** Account is created; confirmation message appears  
+- **Expected Result:** Account created; confirmation message appears  
 - **Actual Result:** TBD  
 - **Pass/Fail:** TBD  
 - **Priority:** High  
@@ -33,7 +20,7 @@
 
 ---
 
-## 2. TC002 – User Login
+## TC002 – User Login
 - **Precondition:** User is registered  
 - **Test Steps:**  
   1. Navigate to login page  
@@ -47,7 +34,7 @@
 
 ---
 
-## 3. TC003 – Add Car Rating
+## TC003 – Add Car Rating
 - **Precondition:** User is logged in  
 - **Test Steps:**  
   1. Navigate to a car model page  
@@ -61,7 +48,7 @@
 
 ---
 
-## 4. TC004 – Search Car Model
+## TC004 – Search Car Model
 - **Precondition:** User is logged in  
 - **Test Steps:**  
   1. Enter car model name in search bar  
@@ -74,7 +61,7 @@
 
 ---
 
-## 5. TC005 – Shopping Cart Add/Remove
+## TC005 – Shopping Cart Add/Remove
 - **Precondition:** User is logged in  
 - **Test Steps:**  
   1. Add item to cart  
@@ -87,7 +74,7 @@
 
 ---
 
-## 6. TC006 – Checkout Process
+## TC006 – Checkout Process
 - **Precondition:** Item is in cart  
 - **Test Steps:**  
   1. Proceed to checkout  
@@ -101,7 +88,7 @@
 
 ---
 
-## 7. TC007 – User Profile Update
+## TC007 – User Profile Update
 - **Precondition:** User is logged in  
 - **Test Steps:**  
   1. Navigate to profile page  
@@ -115,7 +102,7 @@
 
 ---
 
-## 8. TC008 – Logout
+## TC008 – Logout
 - **Precondition:** User is logged in  
 - **Test Steps:**  
   1. Click **Logout**  
@@ -127,7 +114,7 @@
 
 ---
 
-## 9. TC009 – Responsive Design
+## TC009 – Responsive Design
 - **Precondition:** Any page open  
 - **Test Steps:**  
   1. Resize browser window or switch to mobile view using DevTools  
@@ -139,7 +126,7 @@
 
 ---
 
-## 10. TC010 – Cross-Browser
+## TC010 – Cross-Browser
 - **Precondition:** Any page open  
 - **Test Steps:**  
   1. Open app in Chrome and Firefox  
