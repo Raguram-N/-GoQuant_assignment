@@ -71,9 +71,8 @@ In addition to finding bugs, this testing exercise also aims to provide UX recom
 
 ---
 
-## 6. Test Deliverables
-- Test Plan (this document)  
-- Test Cases (separate document/section)  
+## 6. Test Deliverables  
+- [Test Cases](https://github.com/Raguram-N/-GoQuant_assignment/blob/main/Test_Cases.md/) 
 - Bug Report (separate doc)  
 - Automation Suite (ZIP)  
 - Demo Video  
