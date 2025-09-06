@@ -33,3 +33,41 @@ Clicking the **Read More** link in the comment section unexpectedly redirects th
 ### Suggested Fix/Workaround
 - Update the **Read More** functionality to either expand comments inline or navigate to a full-comment view, instead of redirecting to the car detail page.  
 - Maintain consistency across all pages (Popular Make, Overall Rating, etc.).
+
+
+
+
+### BUG005 – User Name Not Clickable
+
+**Description:**  
+The user name displayed in the header/profile section is not clickable. On hover, the cursor changes to a “red circle cross,” preventing navigation to the profile page or related options.
+
+**Steps to Reproduce:**  
+1. Log in to the Buggy Car Rating App with a valid account.  
+2. Navigate to any page displaying the user name in the header.  
+3. Hover the mouse over the user name.  
+4. Attempt to click the user name.
+
+**Expected Behavior:**  
+- User name should be clickable to navigate to profile or show a dropdown menu.  
+- Cursor changes to a pointer (hand) on hover.
+
+**Actual Behavior:**  
+- Cursor shows a red circle with a cross.  
+- Clicking the user name does nothing.
+
+**Severity Level:** Medium  
+**Priority Level:** Medium  
+
+**Environment Details:**  
+- Browser: Chrome v122 / Firefox v117  
+- OS: Windows 10  
+
+**Screenshots/Attachments:**  
+[Red cross mouse pointer (yellow highlight)](https://github.com/Raguram-N/-GoQuant_assignment/blob/main/Red%20cross%20over%20user%20name.jpg)
+
+**Suggested Fix/Workaround:**  
+- Ensure the user name element has correct clickable link or button functionality.  
+- Update CSS to show pointer cursor on hover.  
+- Test across browsers for consistent behavior.
+
