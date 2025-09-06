@@ -1,15 +1,13 @@
 # UX Recommendations
 
 - [Recommendation 1 – Search Bar Missing](#recommendation-1--search-bar-missing)
-- [Recommendation 2 – Navigation Clarity](#recommendation-2--navigation-clarity)
-- [Recommendation 3 – Button Visibility](#recommendation-3--button-visibility)
-- [Recommendation 4 – Form Field Validation](#recommendation-4--form-field-validation)
-- [Recommendation 5 – Mobile Responsiveness](#recommendation-5--mobile-responsiveness)
-- [Recommendation 6 – Feedback on Actions](#recommendation-6--feedback-on-actions)
-- [Recommendation 7 – Color Contrast & Readability](#recommendation-7--color-contrast--readability)
-- [Recommendation 8 – Loading Indicators](#recommendation-8--loading-indicators)
-- [Recommendation 9 – Profile Page Layout](#recommendation-9--profile-page-layout)
-- [Recommendation 10 – Error Message Visibility](#recommendation-10--error-message-visibility)
+- [Recommendation 2 – Show/Hide Password Option Missing](#recommendation-2--showhide-password-option-missing)
+- [Recommendation 3 – Missing Home/Back Navigation](#recommendation-3--missing-homeback-navigation)
+- [Recommendation 4 – Sorting Options Missing](#recommendation-4--sorting-options-missing)
+- [Recommendation 5 – Pagination Usability](#recommendation-5--pagination-usability)
+- [Recommendation 6 - Welcome Thank You message is missing](#recommendation-6---welcome-thank-you-message-is-missing)
+- [Recommendation 7 – Automatic Login After Registration](#recommendation-7--automatic-login-after-registration)
+- [Recommendation 8 – Display Password Criteria](#recommendation-8--display-password-criteria)
 
 ---
 
@@ -58,7 +56,7 @@
 - Highlight the **current page** visually for easy orientation.  
 - Consider adding **“First” and “Last” buttons** for quicker access to boundary pages.
 
-## Recommendation 6 – Welcome/Thank You message is missing
+## Recommendation 6 - Welcome Thank You message is missing
 **Issue:** Users do not receive a welcome message upon login or a thank you/confirmation message upon logout, which reduces engagement and clarity about the action's success.  
 
 **UX Recommendation:**  
