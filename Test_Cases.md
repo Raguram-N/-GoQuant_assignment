@@ -12,22 +12,16 @@ This document contains detailed QA test cases for [Buggy Car Rating Application]
 - [TC002 – User Login](#tc002--user-login)
 - [TC003 – Negative Scenarios: Registration and Login](#tc003--negative-scenarios-registration-and-login)
 - [TC004 – Add Car voting](#tc004--add-car-voting)
-- [TC005 – Add Multiple Ratings](#tc005--add-multiple-ratings)
-- [TC006 – Search Car Model](#tc006--search-car-model)
-- [TC007 – Search Non-Existent Car](#tc007--search-non-existent-car)
-- [TC008 – Shopping Cart Add Item](#tc008--shopping-cart-add-item)
-- [TC009 – Shopping Cart Remove Item](#tc009--shopping-cart-remove-item)
-- [TC010 – Checkout Process](#tc010--checkout-process)
-- [TC011 – Checkout with Empty Cart](#tc011--checkout-with-empty-cart)
-- [TC012 – User Profile Update](#tc012--user-profile-update)
-- [TC013 – Change Password](#tc013--change-password)
-- [TC014 – Logout](#tc014--logout)
-- [TC015 – Responsive Design Test](#tc015--responsive-design-test)
-- [TC016 – Cross-Browser Functionality](#tc016--cross-browser-functionality)
-- [TC017 – Navigation Links Test](#tc017--navigation-links-test)
-- [TC018 – Error Messages Display](#tc018--error-messages-display)
-- [TC019 – Session Timeout Test](#tc019--session-timeout-test)
-- [TC020 – Popular Car Make Sorting](#tc020--popular-car-make-sorting)
+- [TC005 – User Profile Update](#tc005--user-profile-update)
+- [TC006 – Verify Logout and Voting Option Absence](#tc006--verify-logout-and-voting-option-absence)
+- [TC007 – Navigation and UI/UX Verification](#tc007--navigation-and-uiux-verification)
+- [TC008 – Responsive Testing on Different Screen Sizes](#tc008--responsive-testing-on-different-screen-sizes)
+- [TC009 – Cross-Browser Compatibility](#tc009--cross-browser-compatibility)
+- [TC010 – Performance and Load Testing](#tc010--performance-and-load-testing)
+- [TC011 – Security Testing: Input Validation](#tc011--security-testing-input-validation)
+- [TC012 - Accessibility Testing](#tc012---accessibility-testing)
+- [TC013 – Session Timeout Test](#tc013--session-timeout-test)
+
 
 ---
 
@@ -122,20 +116,17 @@ This document contains detailed QA test cases for [Buggy Car Rating Application]
   1. On the car detail page, check the current **Votes** count  
   2. Click the **Vote** button for the car  
   3. Optionally, enter a comment in the **Your Comment** field 
-     - Enter normal text (e.g., `Great car!`)  
-     - Enter potentially malicious text (e.g., `<script>alert('hack')</script>`)   
   4. Submit the vote  
   5. Observe any confirmation message (e.g., “Thank you for your vote!”)  
   6. Verify that the **Votes** count increments by 1  
   7. Check that the comment (if entered) appears in the comments list with correct timestamp and author  
   8. Repeat voting from other user accounts (if possible) to validate vote increment  
-  9. Attempt to submit invalid inputs in the comment (e.g., scripts, special characters) to check validation  
+      
 
 - **Expected Result:**  
   - Vote is successfully registered  
   - Total votes count increases correctly  
   - Comment appears under the car (if provided) 
-  - No XSS or script injection vulnerabilities  - Script/HTML injection is **escaped or blocked** (e.g., `<script>` displays as text, not executed)  
   - Users cannot vote multiple times from the same account for same car (if intended)  
 
 - **Priority:** High  
@@ -146,208 +137,203 @@ This document contains detailed QA test cases for [Buggy Car Rating Application]
 
 ---
 
-## TC005 – Add Multiple Ratings
-- **Precondition:** User logged in  
+## TC005 – User Profile Update
+- **Objective:** Verify that a logged-in user can view and update profile information safely
+- **Precondition:** User is logged in on the [Buggy Car Rating App](https://buggy.justtestit.org/)
 - **Test Steps:**  
-  1. Navigate to a car model  
-  2. Submit rating multiple times with different stars  
-- **Expected Result:** All ratings saved; average updates correctly  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** Medium  
-- **Test Data:** Any car model  
-
----
-
-## TC006 – Search Car Model
-- **Precondition:** User logged in  
-- **Test Steps:**  
-  1. Enter car model name in search bar  
-  2. Click **Search**  
-- **Expected Result:** Relevant car model(s) appear  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** Medium  
-- **Test Data:** Valid car names  
-
----
-
-## TC007 – Search Non-Existent Car
-- **Precondition:** User logged in  
-- **Test Steps:**  
-  1. Enter a random/non-existent car name  
-  2. Click **Search**  
-- **Expected Result:** No results displayed; proper message shown  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** Low  
-- **Test Data:** Random string  
-
----
-
-## TC008 – Shopping Cart Add Item
-- **Precondition:** User logged in  
-- **Test Steps:**  
-  1. Browse car models  
-  2. Click **Add to Cart**  
-- **Expected Result:** Item added; cart counter updates  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
+  1. Navigate to the **Profile Page** from the user menu  
+  2. Verify that the current profile data is displayed correctly:  
+     - Login/Username  
+     - First Name  
+     - Last Name  
+     - Additional Info: Gender, Age, Address, Phone, Hobby  
+  3. Update profile fields with valid data:  
+     - First Name, Last Name, Address, Phone, Hobby, etc.  
+     - Optional: Change Password by entering Current Password, New Password, Confirm Password  
+  4. Click **Save/Update** button  
+  5. Verify that success message appears (e.g., “Profile updated successfully”)  
+  6. Attempt negative inputs:  
+     - Leave required fields blank  
+     - Enter invalid characters in names or phone number  
+     - Enter mismatched new password and confirm password  
+  7. Submit the form and verify validation messages for each issue  
+- **Expected Result:**  
+  - Valid updates are saved and displayed correctly  
+  - Password changes only if current password is correct and new/confirm match  
+  - Validation messages appear for invalid inputs  
+  - No XSS or script injection vulnerabilities (e.g., `<script>` displays as text)  
 - **Priority:** High  
-- **Test Data:** Any product  
+- **Test Data:**  
+  - Valid profile info  
+  - Invalid/missing data for negative testing  
+  - Script/malicious inputs to test security
 
 ---
 
-## TC009 – Shopping Cart Remove Item
-- **Precondition:** Item added to cart  
+## TC006 – Verify Logout and Voting Option Absence  
+
+**Objective:**  
+Ensure that once a user logs out, the voting functionality is no longer accessible.  
+
+**Precondition:**  
+User is logged in and on any car detail page.  
+
+**Test Steps:**  
+1. Log out of the application using the **Logout** button.  
+2. Attempt to navigate back to a car detail page (via Popular Make/Model/Overall Rating or direct URL).  
+3. Check if the **Vote button** and **Comment box** are visible.  
+
+**Expected Result:**  
+- **Vote button and Comment box must not be displayed**.  
+- Application should display a message like: *“You need to be logged in to vote.”*  
+
+**Priority:** High  
+
+---
+
+## TC007 – Navigation and UI/UX Verification
+- **Objective:** Verify that all navigation links, menus, and buttons work correctly and the user interface is intuitive
+- **Precondition:** User is logged in (or on main pages for general navigation)
 - **Test Steps:**  
-  1. Open cart  
-  2. Click **Remove** on an item  
-- **Expected Result:** Item removed; cart counter updates  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
+  1. Click all main navigation links (Home, Profile, Cars, Logout, etc.)  
+  2. Verify pages load correctly without errors  
+  3. Check buttons, icons, and links for visibility and proper labels  
+  4. Ensure consistent design (colors, fonts, spacing) across pages  
+  5. Validate that menus expand/collapse as expected (if any dropdowns)  
+- **Expected Result:**  
+  - All navigation links and buttons work as intended  
+  - UI elements are consistent and visually clear  
+  - No broken links or misaligned elements  
+- **Priority:** Medium  
+- **Test Data:** NA
+
+---
+
+## TC008 – Responsive Testing on Different Screen Sizes
+- **Objective:** Verify that the application layout, content, and interactive elements adapt correctly across various screen sizes (desktop, tablet, mobile)
+- **Precondition:** User is logged in or on any accessible page of the Buggy Car Rating App
+- **Test Steps:**  
+  1. Open the application in a desktop browser (full screen)  
+     - Check layout, images, buttons, forms, and menus  
+     - Perform main workflows: login, vote, update profile, navigation  
+  2. Resize the browser window to tablet size (e.g., 768px width)  
+     - Verify that text remains readable, images scale properly, and buttons are accessible  
+     - Ensure menus or dropdowns work correctly  
+  3. Switch to mobile view (e.g., 375px width) using browser DevTools or a real device  
+     - Verify all elements are visible and functional  
+     - Check that the voting button, comment box, and profile update forms work correctly  
+  4. Rotate device orientation (portrait/landscape) and observe layout adjustments  
+- **Expected Result:**  
+  - Layout adjusts properly for all screen sizes without overlapping or hidden elements  
+  - Interactive elements remain usable (buttons clickable, forms fillable)  
+  - Text remains readable and images scale correctly  
+  - Menus, navigation, and vote functionality work in all screen sizes  
+- **Priority:** Medium  
+- **Test Data:** NA
+
+---
+
+## TC009 – Cross-Browser Compatibility
+- **Objective:** Verify that the Buggy Car Rating App functions correctly on different browsers
+- **Precondition:** User is logged in or on any accessible page of the application
+- **Test Steps:**  
+  1. Open the application in **Google Chrome**  
+     - Perform key workflows: login, vote for a car, update profile, navigate between pages  
+     - Check layout, buttons, forms, and images  
+  2. Open the application in **Mozilla Firefox**  
+     - Repeat the same workflows as in Chrome  
+     - Compare behavior, appearance, and functionality with Chrome  
+  3. (Optional) Test in additional browsers like **Edge** or **Safari** if available  
+     - Repeat main workflows and check layout and interactive elements  
+- **Expected Result:**  
+  - All functionalities work identically across tested browsers  
+  - Layout, text, buttons, forms, and images appear correctly  
+  - No browser-specific glitches or broken elements  
+- **Priority:** Medium  
+- **Test Data:** NA
+
+---
+
+## TC010 – Performance and Load Testing
+- **Objective:** Verify that the Buggy Car Rating App performs efficiently under normal and high load conditions, and page elements load within acceptable time limits
+- **Precondition:** Application is accessible; test user account exists (optional)
+- **Test Steps:**  
+  1. Open the application on a desktop or laptop  
+     - Measure page load time for home page, registration/login, and car details pages  
+  2. Perform typical user actions sequentially:  
+     - Log in, navigate to a car detail page, vote for a car, view profile  
+     - Note the time taken for each action and page response  
+  3. Simulate **multiple users** (if possible using tools like JMeter or LoadNinja) accessing the site simultaneously  
+     - Measure response time under moderate load (e.g., 10–50 users)  
+     - Measure response time under high load (e.g., 100+ users)  
+  4. Observe any errors, crashes, or slowdowns during high load scenarios  
+  5. Optionally, test on different browsers and devices to check consistency  
+- **Expected Result:**  
+  - Pages load within acceptable time (e.g., <3 seconds for desktop, <5 seconds for mobile)  
+  - No errors, crashes, or broken elements occur under normal and high load  
+  - Application remains functional and responsive under simulated load  
+- **Priority:** Medium  
+- **Test Data:**  
+  - Registered user account(s)  
+  - Simulated user load scenarios (number of concurrent users, actions performed) 
+
+---
+
+## TC011 – Security Testing: Input Validation
+- **Objective:** Ensure that all input fields in the Buggy Car Rating App properly validate data and prevent common security vulnerabilities
+- **Precondition:** User is on any form page (registration, login, voting, profile update)
+- **Test Steps:**  
+  1. Enter special characters, scripts, or SQL-like inputs in text fields (e.g., <script>alert('xss')</script>, ' OR '1'='1)  
+  2. Observe validation messages and application behavior  
+  3. Verify that no unintended behavior, alerts, or crashes occur  
+- **Expected Result:**  
+  - Malicious inputs are sanitized and displayed as text or blocked  
+  - Application remains stable, no XSS, SQL injection, or buffer overflow occurs  
 - **Priority:** High  
-- **Test Data:** Any product  
+- **Test Data:**  
+  - Malicious script inputs, invalid characters, empty fields, extremely long strings
 
 ---
 
-## TC010 – Checkout Process
-- **Precondition:** Item in cart  
-- **Test Steps:**  
-  1. Click **Checkout**  
-  2. Fill shipping and payment info  
-  3. Submit order  
-- **Expected Result:** Order confirmation displayed  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** High  
-- **Test Data:** Test payment info  
+## TC012  – Accessibility Testing
+- **Objective:** Verify that the app is accessible to users with disabilities and follows accessibility standards
+- **Precondition:** User is on any page of the Buggy Car Rating App
+- **Test Steps:**
+  1. Navigate using **keyboard only**
+  2. Check all interactive elements are reachable and actionable
+  3. Verify all images have **alt text**
+  4. Use screen reader (NVDA, VoiceOver) to navigate pages
+  5. Check for sufficient color contrast
+  6. Resize text in browser (zoom up to 200%) and verify usability
+- **Expected Result:**
+  - All interactive elements accessible via keyboard
+  - Screen readers correctly announce content
+  - Images have descriptive alt text
+  - Sufficient color contrast exists
+  - Layout remains functional when zoomed
+- **Priority:** Medium
+- **Test Data:** NA
 
 ---
 
-## TC011 – Checkout with Empty Cart
-- **Precondition:** Cart is empty  
-- **Test Steps:**  
-  1. Click **Checkout**  
-- **Expected Result:** Warning message; cannot proceed  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** Medium  
-- **Test Data:** NA  
 
----
+## TC013 – Session Timeout Test
+- **Objective:** Verify that the application automatically logs out the user after a period of inactivity to maintain security and session integrity.
 
-## TC012 – User Profile Update
-- **Precondition:** User logged in  
-- **Test Steps:**  
-  1. Navigate to profile  
-  2. Update details  
-  3. Save changes  
-- **Expected Result:** Changes saved; confirmation message  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** Medium  
-- **Test Data:** Valid profile info  
+- **Precondition:** User is logged in on the Buggy Car Rating App.
 
----
+- **Test Steps:**
+  1. Log in with a valid user account.
+  2. Navigate to the home page or any accessible page of the application.
+  3. Remain idle without performing any actions for 10-15 minutes (or the configured session timeout duration).
+  4. Attempt to perform an action after the idle period (e.g., click a navigation link, vote, or access profile).
+  5. Observe the application behavior and messages displayed.
 
-## TC013 – Change Password
-- **Precondition:** User logged in  
-- **Test Steps:**  
-  1. Go to profile → change password  
-  2. Enter old password  
-  3. Enter new password  
-  4. Confirm new password  
-- **Expected Result:** Password updated; confirmation shown  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** Medium  
-- **Test Data:** Valid old + new password  
+- **Expected Result:**
+  - The session automatically expires after the idle period.
+  - User is redirected to the login page.
+  - Any action attempted after timeout requires re-login.
+  - No sensitive data is accessible after session expiration.
 
----
-
-## TC014 – Logout
-- **Precondition:** User logged in  
-- **Test Steps:**  
-  1. Click **Logout**  
-- **Expected Result:** Redirected to login page  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** High  
-- **Test Data:** NA  
-
----
-
-## TC015 – Responsive Design Test
-- **Precondition:** Any page open  
-- **Test Steps:**  
-  1. Resize browser window  
-  2. Switch to mobile view  
-- **Expected Result:** Layout adjusts; no broken elements  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** Medium  
-- **Test Data:** NA  
-
----
-
-## TC016 – Cross-Browser Functionality
-- **Precondition:** Any page open  
-- **Test Steps:**  
-  1. Open application in Chrome and Firefox  
-  2. Perform login, search, add rating  
-- **Expected Result:** Actions work identically in both browsers  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** Medium  
-- **Test Data:** NA  
-
----
-
-## TC017 – Navigation Links Test
-- **Precondition:** User logged in  
-- **Test Steps:**  
-  1. Click all main navigation links (Home, Profile, Cars, etc.)  
-- **Expected Result:** Pages load correctly; no broken links  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** Medium  
-- **Test Data:** NA  
-
----
-
-## TC018 – Error Messages Display
-- **Precondition:** User performs invalid actions  
-- **Test Steps:**  
-  1. Submit empty registration form  
-  2. Submit invalid search  
-- **Expected Result:** Proper error messages shown for each case  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** Medium  
-- **Test Data:** NA  
-
----
-
-## TC019 – Session Timeout Test
-- **Precondition:** User logged in  
-- **Test Steps:**  
-  1. Remain idle for 10-15 minutes  
-- **Expected Result:** Session expires; user redirected to login  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** Low  
-- **Test Data:** NA  
-
----
-
-## TC020 – Popular Car Make Sorting
-- **Precondition:** User logged in  
-- **Test Steps:**  
-  1. Navigate to popular car makes page  
-  2. Observe sorting/filtering options  
-- **Expected Result:** Cars sorted correctly; filters work  
-- **Actual Result:** TBD  
-- **Pass/Fail:** TBD  
-- **Priority:** Medium  
-- **Test Data:** NA  
+- **Priority:** Medium
+- **Test Data:** Valid registered user credentials
