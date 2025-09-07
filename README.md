@@ -74,7 +74,7 @@ In addition to finding bugs, this testing exercise also aims to provide UX recom
 ## 6. Test Deliverables  
 - [Test Cases](https://github.com/Raguram-N/-GoQuant_assignment/blob/main/Test_Cases.md/) 
 - [Bug Identification & Reporting](https://github.com/Raguram-N/-GoQuant_assignment/blob/main/Bug%20Identification%20%26%20Reporting.md)  
-- Automation Suite (ZIP)
+- [Automation Suite](https://github.com/Raguram-N/-GoQuant_assignment/blob/main/goquant-assignment.zip)
 - [UX Optimization Guide](https://github.com/Raguram-N/-GoQuant_assignment/blob/main/UX%20Optimization%20Guide.md)  
 - Demo Video  
 
