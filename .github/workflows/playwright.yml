@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        browser: [chromium, firefox, webkit]   # Run tests on all 3 browsers
-
+        browser: [chromium, firefox, webkit]   # Run tests on all 3 browsers  
+        
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
