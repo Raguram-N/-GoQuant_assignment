@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Playwright E2E Tests
 
 on:
   push:
@@ -9,10 +9,12 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        browser: [chromium, firefox, webkit]   # Run tests on all 3 browsers  
-        
+        project: [chromium, firefox, webkit, 'iPhone 14']  # Run all browsers + mobile emulation
+      fail-fast: false  # Continue running other matrix jobs even if one fails
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -23,16 +25,17 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Run Playwright Tests
-        uses: microsoft/playwright-github-action@v1
-        with:
-          run-deps: true
-          browsers: ${{ matrix.browser }}
+      - name: Install Playwright browsers & dependencies
+        run: npx playwright install --with-deps
 
-      - name: Upload Playwright report
+      - name: Run Playwright tests for ${{ matrix.project }}
+        run: npx playwright test --project="${{ matrix.project }}" --reporter=html
+
+      - name: Upload Playwright HTML Report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: playwright-report-${{ matrix.project }}
           path: playwright-report/
