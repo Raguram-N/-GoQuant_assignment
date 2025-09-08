@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        project: [Chromium, Firefox, "Mobile (iPhone 13)"]
+        project: [chromium, firefox]
     
     steps:
       - name: Checkout repository
