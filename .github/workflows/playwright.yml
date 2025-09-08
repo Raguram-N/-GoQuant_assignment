@@ -1,10 +1,10 @@
-name: Playwright E2E Tests (Chrome + Firefox)
+name: Playwright Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
@@ -12,9 +12,8 @@ jobs:
 
     strategy:
       matrix:
-        project: [Chromium, Firefox]  # Only two browsers for now
-      fail-fast: false
-
+        project: [chromium, firefox]
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -22,20 +21,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 22
+          node-version: 20
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npx playwright install --with-deps
 
-      - name: Install Playwright browsers + system deps
-        run: npx playwright install --with-deps
-
-      - name: Run Playwright tests for ${{ matrix.project }}
+      - name: Run Playwright tests
         run: npx playwright test --project="${{ matrix.project }}" --reporter=html
 
-      - name: Upload Playwright HTML Report
-        if: always()
+      - name: Upload Playwright report
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report-${{ matrix.project }}
-          path: playwright-report/
+          path: playwright-report
