@@ -31,7 +31,7 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test --project="${{ matrix.project }}" --reporter=html
 
-      - name: Upload Playwright report
+      - name: Upload Playwright reports with screenshots/videos
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report-${{ matrix.project }}
