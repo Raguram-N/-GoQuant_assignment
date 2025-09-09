@@ -122,7 +122,7 @@ However, the **Login** button also highlights simultaneously, causing confusion.
 - OS: Windows 10 / macOS  
 
 **Screenshots/Attachments:**  
-- ![Register/Login Button Highlight Issue](images/bug006-register-login.png)  
+- [Register / Login Button Highlight Issue](https://github.com/Raguram-N/-GoQuant_assignment/blob/main/LoginRegister%20highlight.png)
 
 **Suggested Fix/Workaround:**  
 - Separate CSS/JS logic for hover and form-completion highlight.  
