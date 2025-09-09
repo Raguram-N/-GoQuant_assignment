@@ -165,7 +165,7 @@ For multi-page jumps (e.g., page 10), the cumulative delay frustrates users.
 - Network: 100 Mbps  
 
 **Screenshots/Attachments:**  
-- ![Pagination Latency Issue][(https://github.com/Raguram-N/-GoQuant_assignment/blob/main/Page%20navigation.png)  
+- [Pagination Latency Issue][(https://github.com/Raguram-N/-GoQuant_assignment/blob/main/Page%20navigation.png)  
 
 **Suggested Fix/Workaround:**  
 - Optimize server/API response for pagination.  
@@ -218,7 +218,7 @@ This negatively impacts usability, as users cannot predict, control, or understa
 - Network: 100 Mbps  
 
 **Screenshots/Attachments:**  
-- [Table Header Rearrangement Issue Screenshot](https://github.com/Raguram-N/-GoQuant_assignment/blob/main/Header%20title.png))  
+- [Table Header Rearrangement Issue Screenshot](https://github.com/Raguram-N/-GoQuant_assignment/blob/main/Header%20title.png)
 
 **Suggested Fix/Workaround:**  
 - Implement **sorting indicators** (asc/desc icons) for each column header.  
