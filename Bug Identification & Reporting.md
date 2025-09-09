@@ -165,7 +165,7 @@ For multi-page jumps (e.g., page 10), the cumulative delay frustrates users.
 - Network: 100 Mbps  
 
 **Screenshots/Attachments:**  
-- [Pagination Latency Issue][(https://github.com/Raguram-N/-GoQuant_assignment/blob/main/Page%20navigation.png)  
+- [Pagination Latency Issue](https://github.com/Raguram-N/-GoQuant_assignment/blob/main/Page%20navigation.png)  
 
 **Suggested Fix/Workaround:**  
 - Optimize server/API response for pagination.  
