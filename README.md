@@ -1,4 +1,4 @@
-# 📄 Test Plan for GoQuant Assignment
+# 📄 GoQuant Assignment
 
 **Title:** Test Plan – Buggy Car Rating Application  
 **Author:** Raguram Narayanaswamy  
